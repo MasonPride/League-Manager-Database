@@ -1,8 +1,9 @@
 class Players:
-    def __init__(self, player_id: int, team_id: int, first_name: str, last_name: str, birthday: str, position: str, salary: float):
+    def __init__(self, player_id: int, team_id: int, first_name: str, last_name: str, number: int, birthday: str, position: str):
         self._player_id = person_id
         self._first_name = first_name
         self._last_name = last_name
+        self._number = number
         self._birthday = birthday
         self._position = position
         self._salary = salary
@@ -18,6 +19,10 @@ class Players:
     @property
     def last_name(self):
         return self._last_name
+    
+    @property
+    def number(self):
+        return self._number
 
     @property
     def birthday(self):
@@ -27,6 +32,3 @@ class Players:
     def position(self):
         return self._position
 
-    @property
-    def salary(self):
-        return self._salary

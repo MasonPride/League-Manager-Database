@@ -6,9 +6,9 @@ BEGIN
         TeamID INT NOT NULL,
         FirstName NVARCHAR(32) NOT NULL,
         LastName NVARCHAR(32) NOT NULL,
+        [Number] INT NOT NULL,
         Birthday DATE NOT NULL,
-        Position NVARCHAR(64) NOT NULL,
-        Salary DECIMAL(15,2) NOT NULL,
+        Position NVARCHAR(32) NOT NULL,
         CONSTRAINT [PK_League_Players_PlayerID] PRIMARY KEY CLUSTERED 
         (
             PlayerID ASC
