@@ -7,6 +7,7 @@ Version: 0.1
 """
 from typing import List
 from src.tests.test_get_stadium_by_name import test_get_stadium_by_name
+from src.tests.test_team_repo import test_team_repo
 
 
 class Main:
@@ -15,5 +16,5 @@ class Main:
     @staticmethod
     def main(args: List[str]) -> None:
         """Main method."""
-        test_get_stadium_by_name()
+        test_team_repo()
         

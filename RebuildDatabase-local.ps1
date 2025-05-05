@@ -32,9 +32,14 @@ Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\leagu
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Tables\League.PlayerStats.sql" -TrustServerCertificate
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Tables\League.TeamStats.sql" -TrustServerCertificate
 
-Write-Host "Stadium Stored procedures..."
+Write-Host "Stadiums Stored procedures..."
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\Stadiums\League.FetchStadium.sql" -TrustServerCertificate
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\Stadiums\League.GetStadiumByName.sql" -TrustServerCertificate
+
+Write-Host "Teams Stored procedures..."
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\Teams\League.FetchTeam.sql" -TrustServerCertificate
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\Teams\League.GetTeamByName.sql" -TrustServerCertificate
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\Teams\League.SaveTeam.sql" -TrustServerCertificate
 
 
 Write-Host "Inserting Data..."

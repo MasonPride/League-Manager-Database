@@ -1,5 +1,5 @@
 CREATE OR ALTER PROCEDURE League.GetStadiumByName
-   @Name NVARCHAR(128)
+   @Name NVARCHAR(32)
 AS
 
 SELECT S.StadiumID, S.Name, S.Capacity, S.City

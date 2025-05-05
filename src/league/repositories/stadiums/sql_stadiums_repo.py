@@ -13,7 +13,7 @@ class SqlStadiumsRepo(IStadiumsRepo):
     def __init__(self, driver: str = "{ODBC Driver 17 for SQL Server}", server: str = "", database: str = "", trusted: bool = True):
         self.executor = SqlCommandExecutor(driver=driver, server=server, database=database, trusted=trusted)
         
-    def fetch_stadium(self, person_id: int) -> Optional[Stadiums]:
+    def fetch_stadium(self, stadium_id: int) -> Optional[Stadiums]:
             sp_name = "League.FetchStadium"
             inp_param_names = ['StadiumID']
             inp_param_values = [stadium_id]
@@ -24,7 +24,7 @@ class SqlStadiumsRepo(IStadiumsRepo):
             if len(results) == 1:
                 return self.translate_stadiums(results[0])
             else:
-                raise RecordNotFoundException(person_id)
+                raise RecordNotFoundException(stadium_id)
 
     def get_stadium_by_name(self, name: str) -> Optional[Stadiums]:
         sp_name = "League.GetStadiumByName"
