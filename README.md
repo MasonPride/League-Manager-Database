@@ -24,7 +24,7 @@ Before running the project, ensure you have the following installed:
   ```
   To install the SQL Server Module:
     ```powershell
-    Install-Module -Name SqlServer -Scope CurrentUser
+    Install-Module -Name SqlServer -AllowClobber
    ```
 
 
