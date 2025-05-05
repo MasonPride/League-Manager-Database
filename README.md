@@ -2,10 +2,6 @@
 
 This project is a relational database system designed for managing a sports league. It includes a full SQL schema, scripts to manage database lifecycle, and supporting Python scripts.
 
-# League Manager Database Project
-
-This project is a relational database system designed for managing a sports league. It includes a full SQL schema, scripts to manage the database lifecycle, and supporting Python scripts.
-
 ## Requirements
 
 Before running the project, ensure you have the following installed:
