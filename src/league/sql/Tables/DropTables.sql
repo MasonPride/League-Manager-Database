@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS League.PlayerStats;
+DROP TABLE IF EXISTS League.TeamStats;
+DROP TABLE IF EXISTS League.Games;
+DROP TABLE IF EXISTS League.Players;
+DROP TABLE IF EXISTS League.Teams;
+DROP TABLE IF EXISTS League.Stadiums;
