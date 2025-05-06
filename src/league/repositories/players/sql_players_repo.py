@@ -56,7 +56,7 @@ class SqlPlayersRepo(IPlayersRepo):
             if len(results) == 1:
                 return self.translate_players(results[0])
             else:
-                raise RecordNotFoundException(team_id)
+                raise RecordNotFoundException(player_id)
 
     def get_player_by_name(self, first_name: str, last_name: str) -> Optional[Players]:
         sp_name = "League.GetPlayerByName"

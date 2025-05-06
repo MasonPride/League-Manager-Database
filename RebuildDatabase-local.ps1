@@ -54,12 +54,16 @@ Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\leagu
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\Players\League.CreatePlayer.sql" -TrustServerCertificate
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\Players\League.SavePlayer.sql" -TrustServerCertificate
 
-
+Write-Host "PlayerStats Stored procedures..."
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\PlayerStats\League.SavePlayerStats.sql" -TrustServerCertificate
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\PlayerStats\League.GetPlayerStats.sql" -TrustServerCertificate
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\PlayerStats\League.CreateStatsOnPlayerTrigger.sql" -TrustServerCertificate
 
 Write-Host "Inserting Data..."
 python "$Dir\data_access\CreateStadiumsData.py"
 python "$Dir\data_access\CreateTeamsData.py"
 python "$Dir\data_access\CreatePlayersData.py"
+python "$Dir\data_access\CreatePlayerStatsData.py"
 
 
 Set-Location $CurrentDrive
