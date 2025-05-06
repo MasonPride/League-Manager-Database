@@ -1,7 +1,7 @@
 import csv
 import pyodbc
 
-csv_path = 'src/league/Stadiums.csv'
+csv_path = 'src/league/Data/Stadiums.csv'
 
 conn = pyodbc.connect(
     r'DRIVER={ODBC Driver 17 for SQL Server};'

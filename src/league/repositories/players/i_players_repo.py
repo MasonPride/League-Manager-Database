@@ -16,3 +16,7 @@ class IPlayersRepo(ABC):
     @abstractmethod
     def create_player(self, team_id: int, first_name: str, last_name: str, number: int, birthday: str, position: str):
         pass
+
+    @abstractmethod
+    def save_player(self, team_id: int, first_name: str, last_name: str, number: int, birthday: str, position: str):
+        pass

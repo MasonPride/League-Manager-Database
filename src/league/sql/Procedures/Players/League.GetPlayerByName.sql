@@ -1,10 +1,10 @@
 CREATE OR ALTER PROCEDURE League.GetPlayerByName
-   @FirstName NVARCHAR(32)
+   @FirstName NVARCHAR(32),
    @LastName NVARCHAR(32)
 AS
 
-SELECT T.TeamID, T.StadiumID, T.Name, T.City, T.FoundedDay
-FROM League.Teams T
-WHERE T.FirstName = @FirstName
-    AND T.LastName = @LastName;
+SELECT P.PlayerID, P.TeamID, P.FirstName, P.LastName, P.Number, P.Birthday, P.Position
+FROM League.Players P
+WHERE LTRIM(RTRIM(P.FirstName)) = LTRIM(RTRIM(@FirstName))
+  AND LTRIM(RTRIM(P.LastName)) = LTRIM(RTRIM(@LastName));
 GO
