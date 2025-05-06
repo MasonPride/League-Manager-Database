@@ -8,6 +8,10 @@ class ITeamsRepo(ABC):
     @abstractmethod
     def fetch_team(self, team_id: int) -> Optional[Teams]:
         pass
+    
+    @abstractmethod
+    def get_all_teams(self) -> Optional[List[Teams]]:
+        pass
 
     @abstractmethod
     def get_team_by_name(self, name: str) -> Optional[Teams]:

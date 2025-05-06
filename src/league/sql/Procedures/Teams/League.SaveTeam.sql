@@ -20,8 +20,5 @@ WHEN MATCHED AND NOT EXISTS (
         T.StadiumID = S.StadiumID,
         T.Name = S.Name,
         T.City = S.City,
-        T.FoundedDay = S.FoundedDay
-WHEN NOT MATCHED BY TARGET THEN
-    INSERT (StadiumID, [Name], City, FoundedDay)
-    VALUES (S.StadiumID, S.Name, S.City, S.FoundedDay);
+        T.FoundedDay = S.FoundedDay;
 GO

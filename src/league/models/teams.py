@@ -1,6 +1,6 @@
 class Teams:
     def __init__(self, team_id, stadium_id: int, name: str, city: str, founded_day: str):
-        self._team_id: team_id
+        self._team_id = team_id
         self._stadium_id = stadium_id
         self._name = name
         self._city = city

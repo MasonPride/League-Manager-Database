@@ -6,8 +6,8 @@ BEGIN
         HomeTeamID INT NOT NULL,
         AwayTeamID INT NOT NULL,
         StadiumID INT NOT NULL,
-        HomeScore INT NOT NULL,
-        AwayScore INT NOT NULL,
+        HomeScore INT NOT NULL DEFAULT 0,
+        AwayScore INT NOT NULL DEFAULT 0,
         GameDate DATE NOT NULL,
         CONSTRAINT [PK_League_Games_GameID] PRIMARY KEY CLUSTERED 
         (
