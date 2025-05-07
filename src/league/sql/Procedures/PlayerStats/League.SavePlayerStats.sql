@@ -18,9 +18,6 @@ BEGIN
             Runs = @Runs,
             HomeRuns = @HomeRuns,
             RBI = @RBI,
-            Strikeouts = @Strikeouts
-    WHEN NOT MATCHED THEN
-        INSERT (PlayerID, GamesPlayed, Hits, Runs, HomeRuns, RBI, Strikeouts)
-        VALUES (@PlayerID, @GamesPlayed, @Hits, @Runs, @HomeRuns, @RBI, @Strikeouts);
+            Strikeouts = @Strikeouts;
 END;
 GO

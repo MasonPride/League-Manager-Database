@@ -4,12 +4,11 @@ BEGIN
     (
         TeamStatID INT NOT NULL IDENTITY(1, 1),
         TeamID INT NOT NULL,
-        Season INT NOT NULL,
-        Wins INT NOT NULL,
-        Losses INT NOT NULL,
-        RunsScored INT NOT NULL,
-        RunsAllowed INT NOT NULL,
-        GamesPlayed INT NOT NULL,
+        Wins INT DEFAULT 0,
+        Losses INT DEFAULT 0,
+        RunsScored INT DEFAULT 0,
+        RunsAllowed INT DEFAULT 0,
+        GamesPlayed INT DEFAULT 0,
         CONSTRAINT [PK_League_TeamStats_TeamStatID] PRIMARY KEY CLUSTERED 
         (
             TeamStatID ASC

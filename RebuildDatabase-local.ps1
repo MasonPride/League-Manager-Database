@@ -5,13 +5,6 @@ Param(
 )
 
 # This script requires the SQL Server module for PowerShell.
-# The below commands may be required.
-
-# To check whether the module is installed.
-# Get-Module -ListAvailable -Name SqlServer;
-
-# Install the SQL Server Module
-# Install-Module -Name SqlServer -Scope CurrentUser
 
 $CurrentDrive = (Get-Location).Drive.Name + ":"
 
@@ -58,6 +51,11 @@ Write-Host "PlayerStats Stored procedures..."
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\PlayerStats\League.SavePlayerStats.sql" -TrustServerCertificate
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\PlayerStats\League.GetPlayerStats.sql" -TrustServerCertificate
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\PlayerStats\League.CreateStatsOnPlayerTrigger.sql" -TrustServerCertificate
+
+Write-Host "TeamStats Stored procedures..."
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\TeamStats\League.SaveTeamStats.sql" -TrustServerCertificate
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\TeamStats\League.GetTeamStats.sql" -TrustServerCertificate
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\TeamStats\League.CreateStatsOnTeamTrigger.sql" -TrustServerCertificate
 
 Write-Host "Aggregates Stored procedures..."
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\Aggregates\League.GetAverageStatsByPosition.sql" -TrustServerCertificate

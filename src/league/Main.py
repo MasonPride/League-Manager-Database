@@ -18,5 +18,5 @@ class Main:
     @staticmethod
     def main(args: List[str]) -> None:
         """Main method."""
-        test_player_stats_repo()
+        print("Starting main")
         

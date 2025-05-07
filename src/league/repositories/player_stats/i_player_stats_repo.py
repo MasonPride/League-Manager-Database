@@ -6,7 +6,7 @@ from src.league.models.PlayerStats import PlayerStats
 
 class IPlayerStatsRepo(ABC):
     @abstractmethod
-    def save_player_stats(self, player_id: int) -> Optional[PlayerStats]:
+    def save_player_stats(self, player_id: int, games_played: int, hits: int, runs: int, home_runs: int, rbi: int, strikeouts: int) -> Optional[PlayerStats]:
         pass
 
     @abstractmethod

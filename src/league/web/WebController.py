@@ -44,7 +44,7 @@ class WebController(FlaskView):
         Returns:
             render template of teams
         """
-        teams_repo = SqlTeamsRepo("{ODBC Driver 17 for SQL Server}", "(local)\SQLEXPRESS","DBEFinalProject", "Trusted_Connection=yes")
+        teams_repo = SqlTeamsRepo()
         teams = teams_repo.get_all_teams()
         return render_template("teams.html", teams=teams)
 
