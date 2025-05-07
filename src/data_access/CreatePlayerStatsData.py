@@ -23,9 +23,10 @@ with open(csv_path, newline='', encoding='utf-8') as csvfile:
                 @Hits = ?, 
                 @Runs = ?, 
                 @HomeRuns = ?, 
-                @RBI = ?
+                @RBI = ?,
+                @Strikeouts = ?
         """, int(row['PlayerID']), int(row['GamesPlayed']), int(row['Hits']),
-             int(row['Runs']), int(row['HomeRuns']), int(row['RBI']))
+             int(row['Runs']), int(row['HomeRuns']), int(row['RBI']), int(row['Strikeouts']))
 
 conn.commit()
 cursor.close()

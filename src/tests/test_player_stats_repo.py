@@ -15,3 +15,4 @@ def test_player_stats_repo():
     print(f"Runs: {stats.runs}")
     print(f"Home Runs: {stats.home_runs}")
     print(f"RBIs: {stats.rbi}")
+    print(f"RBIs: {stats.strikeouts}")

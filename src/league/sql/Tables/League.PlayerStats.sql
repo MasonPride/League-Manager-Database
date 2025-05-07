@@ -9,6 +9,7 @@ BEGIN
         Runs INT DEFAULT 0,
         HomeRuns INT DEFAULT 0,
         RBI INT DEFAULT 0,
+        Strikeouts INT DEFAULT 0,
         CONSTRAINT [PK_League_PlayerStats_PlayerStatID] PRIMARY KEY CLUSTERED 
         (
             PlayerStatID ASC

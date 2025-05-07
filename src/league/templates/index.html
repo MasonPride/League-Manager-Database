@@ -1,2 +1,35 @@
 {% extends "layout.html" %} {% block title %}Home{% endblock %} {% block content
-%} {% endblock %}
+%}
+
+<div class="text-center mt-5 mb-3">
+  <h1>Interesting Statistics</h1>
+  <hr class="mx-auto" style="width: 90%; border-top: 3px solid #ccc" />
+</div>
+
+{% if averages %}
+<h3>Averages stats by position:</h3>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th>Position</th>
+        <th>Avg Runs</th>
+        <th>Avg Home Runs</th>
+        <th>Avg Strikeouts</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for stat in averages %}
+      <tr>
+        <td>{{ stat.position }}</td>
+        <td>{{ stat.avg_runs | round(2) }}</td>
+        <td>{{ stat.avg_home_runs | round(2) }}</td>
+        <td>{{ stat.avg_strikeouts | round(2) }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<p class="text-muted">No stats available yet.</p>
+{% endif %} {% endblock %}

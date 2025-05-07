@@ -1,0 +1,23 @@
+{% extends "layout.html" %} {% block title %}Edit Stats - {{ player.first_name
+}} {{ player.last_name }}{% endblock %} {% block content %}
+<div class="container py-4">
+  <h2 class="text-center mb-4">
+    {{ player.first_name }} {{ player.last_name }}
+  </h2>
+
+  <form action="/player/{{ player.player_id }}/stats/edit" method="POST">
+    {{ form.hidden_tag() }} {% for field in form %}
+    <div class="mb-3">
+      {{ field.label }} {{ field(class_="form-control" + (" is-invalid" if
+      field.errors else "")) }} {% for error in field.errors %}
+      <div class="invalid-feedback">{{ error }}</div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+
+    <div class="text-end">
+      <button type="submit" class="btn btn-primary">Save Stats</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

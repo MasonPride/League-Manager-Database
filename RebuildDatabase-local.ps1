@@ -59,6 +59,9 @@ Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\leagu
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\PlayerStats\League.GetPlayerStats.sql" -TrustServerCertificate
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\PlayerStats\League.CreateStatsOnPlayerTrigger.sql" -TrustServerCertificate
 
+Write-Host "Aggregates Stored procedures..."
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\Aggregates\League.GetAverageStatsByPosition.sql" -TrustServerCertificate
+
 Write-Host "Inserting Data..."
 python "$Dir\data_access\CreateStadiumsData.py"
 python "$Dir\data_access\CreateTeamsData.py"

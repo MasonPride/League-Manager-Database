@@ -11,7 +11,8 @@ BEGIN
         PS.Hits,
         PS.Runs,
         PS.HomeRuns,
-        PS.RBI
+        PS.RBI,
+        PS.Strikeouts
     FROM League.PlayerStats PS
     JOIN League.Players P ON PS.PlayerID = P.PlayerID
     WHERE PS.PlayerID = @PlayerID;

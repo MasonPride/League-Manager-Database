@@ -4,7 +4,8 @@ CREATE OR ALTER PROCEDURE League.SavePlayerStats
     @Hits INT,
     @Runs INT,
     @HomeRuns INT,
-    @RBI INT
+    @RBI INT,
+    @Strikeouts INT
 AS
 BEGIN
     MERGE League.PlayerStats AS T
@@ -16,9 +17,10 @@ BEGIN
             Hits = @Hits,
             Runs = @Runs,
             HomeRuns = @HomeRuns,
-            RBI = @RBI
+            RBI = @RBI,
+            Strikeouts = @Strikeouts
     WHEN NOT MATCHED THEN
-        INSERT (PlayerID, GamesPlayed, Hits, Runs, HomeRuns, RBI)
-        VALUES (@PlayerID, @GamesPlayed, @Hits, @Runs, @HomeRuns, @RBI);
+        INSERT (PlayerID, GamesPlayed, Hits, Runs, HomeRuns, RBI, Strikeouts)
+        VALUES (@PlayerID, @GamesPlayed, @Hits, @Runs, @HomeRuns, @RBI, @Strikeouts);
 END;
 GO
