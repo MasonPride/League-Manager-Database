@@ -1,2 +1,6 @@
 pyodbc
 python-dotenv
+flask
+flask-classful
+python-dotenv
+flask-wtf

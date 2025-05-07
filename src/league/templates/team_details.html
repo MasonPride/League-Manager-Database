@@ -1,0 +1,21 @@
+{% extends "layout.html" %} {% block title %}{{ team.name }}{% endblock %} {%
+block content %}
+<div class="container py-4">
+  <h2 class="text-center">{{ team.name }}</h2>
+  <p class="text-center text-muted">
+    {{ team.city }} — Founded: {{ team.founded_day }}
+  </p>
+
+  <h4 class="mt-4">Players</h4>
+  <ul>
+    {% for player in players %}
+    <li>
+      <a href="/players/{{ player.player_id }}/">
+        {{ player.first_name }} {{ player.last_name }} - #{{ player.number }}
+        ({{ player.position }})
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

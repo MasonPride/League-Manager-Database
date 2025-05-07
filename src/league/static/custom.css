@@ -1,0 +1,79 @@
+.team-link {
+  color: black;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.team-link:hover {
+  color: #555;
+}
+
+.team-link::after {
+  content: none !important;
+}
+
+.card-title {
+  margin: 0;
+}
+/* Bootstrap */
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+main > .container {
+  padding: 60px 15px 0;
+}
+
+.footer {
+  background-color: #f5f5f5;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+  text-align: center;
+}
+
+code {
+  font-size: 80%;
+}
+
+.navbar {
+  background-color: rgb(129, 129, 129);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-left: 50px;
+  padding-right: 15px;
+}
+
+.navbar-brand {
+  color: #ffffff !important;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-size: x-large;
+}
+
+.navbar .nav-link {
+  color: #ffffff !important;
+  transition: color 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-size: large;
+  font-weight: bold;
+}
+
+.navbar .navbar-collapse {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.navbar .nav-link:hover {
+  color: grey !important;
+}
+
+.display-4 {
+  text-align: center;
+  font-weight: bold;
+}

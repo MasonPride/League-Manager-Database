@@ -1,0 +1,20 @@
+{% extends "layout.html" %} {% block title %}Teams{% endblock %} {% block
+content %}
+<h2 class="team-heading text-center py-4">Teams</h2>
+
+<div class="row">
+  {% for team in teams %}
+  <div class="col-md-3 mb-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body d-flex justify-content-center align-items-center">
+        <h5 class="card-title text-center mb-0">
+          <a href="/teams/{{ team.team_id }}/" class="team-link"
+            >{{ team.name }}</a
+          >
+        </h5>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
