@@ -36,7 +36,7 @@ Before running the project, ensure you have the following installed:
 ## How to Use
 
 1. **Rebuild the Database**  
-   Run the PowerShell script to drop and recreate tables:
+   - Run the PowerShell script to drop and recreate tables:
 
    ```powershell
    ./RebuildDatabase-local.ps1
@@ -44,10 +44,11 @@ Before running the project, ensure you have the following installed:
    ```
 
 2. **Enviornment Variables**  
-   Creat a `.env` file in the root of the project directory, and populate the env variables with the correct parameters. An env.sample file is given.
+   - Create a `.env` file in the root of the project directory, and populate the env variables with the correct parameters. An env.sample file is given.
 
 3. **Flask Server**
-   To run the Flask server
+
+     - To run the Flask server:
 
    ```bash
    python -m flask run
