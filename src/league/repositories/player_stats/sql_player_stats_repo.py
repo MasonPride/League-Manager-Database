@@ -3,6 +3,10 @@ from typing import Optional, List
 
 import pyodbc
 
+from dotenv import load_dotenv
+import os
+load_dotenv()
+
 from src.data_access.RecordNotFoundException import RecordNotFoundException
 from src.data_access.sql_command_executor import SqlCommandExecutor
 from src.league.repositories.player_stats.i_player_stats_repo import IPlayerStatsRepo
@@ -10,7 +14,7 @@ from src.league.models.PlayerStats import PlayerStats
 
 
 class SqlPlayerStatsRepo(IPlayerStatsRepo):
-    def __init__(self, driver: str = "{ODBC Driver 17 for SQL Server}", server: str = "", database: str = "", trusted: bool = True):
+    def __init__(self, driver: str = str(os.getenv("DRIVER")), server: str = str(os.getenv("SERVER")), database: str = str(os.getenv("DATABASE")), trusted: bool = True):
         self.executor = SqlCommandExecutor(driver=driver, server=server, database=database, trusted=trusted)
 
 

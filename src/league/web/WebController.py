@@ -5,8 +5,9 @@ Creates the controller for our web app.
 Author: Mason Pride
 Version: 0.1
 """
+## import flask 
 from flask import render_template, request, redirect
-from flask_classful import FlaskView, route  # type: ignore
+from flask_classful import FlaskView, route
 
 ## import from repositories
 from src.league.repositories.teams.sql_teams_repo import SqlTeamsRepo
@@ -35,7 +36,7 @@ class WebController(FlaskView):
         Returns:
             render template of index
         """
-        stats_repo = SqlPlayerStatsRepo("{ODBC Driver 17 for SQL Server}", "(local)\\SQLEXPRESS", "DBEFinalProject", "Trusted_Connection=yes")
+        stats_repo = SqlPlayerStatsRepo()
         averages = stats_repo.get_average_stats_by_position()
         return render_template("index.html", averages=averages)
 
@@ -49,13 +50,13 @@ class WebController(FlaskView):
             render template of teams
         """
         teams_repo = SqlTeamsRepo()
-        teams_repo = SqlTeamsRepo()
+
         teams = teams_repo.get_all_teams()
         return render_template("teams.html", teams=teams)
 
     @route('/teams/<id>/', methods=['GET'])
     def show_team(self, id: int):
-        """Teams id route method.
+        """Teams id route GET method.
 
         Gets the details of a specific team from id
 
@@ -64,7 +65,7 @@ class WebController(FlaskView):
         """
         teams_repo = SqlTeamsRepo()
         team_stats_repo = SqlTeamStatsRepo()
-        
+
         team = teams_repo.fetch_team(id)
         players = teams_repo.get_all_players_on_team(id)
         team_stats = team_stats_repo.get_team_stats(id)
@@ -72,6 +73,13 @@ class WebController(FlaskView):
 
     @route('/teams/<int:id>/stats/edit', methods=['GET'])
     def edit_team_stats_form(self, id: int):
+        """Team Stats GET method.
+
+        Gets the stats for a team.
+
+        Returns:
+            render template of edit team stats
+        """
         teams_repo = SqlTeamsRepo()
         stats_repo = SqlTeamStatsRepo()
 
@@ -84,6 +92,13 @@ class WebController(FlaskView):
 
     @route('/teams/<int:id>/stats/edit', methods=['POST'])
     def edit_team_stats_save(self, id: int):
+        """Team Stats POST method.
+
+        Posts the changes to the database.
+
+        Returns:
+            render template of edit team stats
+        """
         stats_repo = SqlTeamStatsRepo()
         teams_repo = SqlTeamsRepo()
 
@@ -117,9 +132,10 @@ class WebController(FlaskView):
         Returns:
             render template of player_details
         """
-        players_repo = SqlPlayersRepo("{ODBC Driver 17 for SQL Server}", "(local)\SQLEXPRESS","DBEFinalProject", "Trusted_Connection=yes")
-        stats_repo = SqlPlayerStatsRepo("{ODBC Driver 17 for SQL Server}", "(local)\SQLEXPRESS","DBEFinalProject", "Trusted_Connection=yes")
-        team_repo = SqlTeamsRepo("{ODBC Driver 17 for SQL Server}", "(local)\SQLEXPRESS","DBEFinalProject", "Trusted_Connection=yes")
+        players_repo = SqlPlayersRepo()
+        stats_repo = SqlPlayerStatsRepo()
+        team_repo = SqlTeamsRepo()
+
         player = players_repo.fetch_player(id)
         stats = stats_repo.get_player_stats(id)
         team = team_repo.fetch_team(player.team_id)
@@ -127,8 +143,15 @@ class WebController(FlaskView):
 
     @route('/player/<int:id>/edit/', methods=['GET'])
     def edit_player(self, id: int):
-        players_repo = SqlPlayersRepo("{ODBC Driver 17 for SQL Server}", "(local)\SQLEXPRESS","DBEFinalProject", "Trusted_Connection=yes")
-        team_repo = SqlTeamsRepo("{ODBC Driver 17 for SQL Server}", "(local)\SQLEXPRESS","DBEFinalProject", "Trusted_Connection=yes")
+        """Players edit id GET route method.
+
+        Gets the details of a specific player stats from id
+
+        Returns:
+            render template of edit_player_details
+        """
+        players_repo = SqlPlayersRepo()
+        team_repo = SqlTeamsRepo()
         
         player = players_repo.fetch_player(id)
         form = PlayerForm(obj=player)
@@ -140,8 +163,15 @@ class WebController(FlaskView):
 
     @route('/player/<int:id>/edit/', methods=['POST'])
     def edit_player_save(self, id: int):
-        players_repo = SqlPlayersRepo("{ODBC Driver 17 for SQL Server}", "(local)\SQLEXPRESS","DBEFinalProject", "Trusted_Connection=yes")
-        team_repo = SqlTeamsRepo("{ODBC Driver 17 for SQL Server}", "(local)\SQLEXPRESS","DBEFinalProject", "Trusted_Connection=yes")
+        """Players id POST route method.
+
+        POSTS the changes of a player to the database
+
+        Returns:
+            render template of edit_player
+        """
+        players_repo = SqlPlayersRepo()
+        team_repo = SqlTeamsRepo()
         form = PlayerForm(request.form)
         
         teams = team_repo.get_all_teams()
@@ -163,14 +193,22 @@ class WebController(FlaskView):
             print("Validation passed:", form.validate_on_submit())
             print("Form errors:", form.errors)
         
+        # If invalid, show form again with errors
         player = players_repo.fetch_player(id)
         return render_template("edit_player.html", form=form, player=player)
 
     
     @route('/player/<int:id>/stats/edit', methods=['GET'])
     def edit_player_stats(self, id: int):
-        players_repo = SqlPlayersRepo("{ODBC Driver 17 for SQL Server}", "(local)\SQLEXPRESS","DBEFinalProject", "Trusted_Connection=yes")
-        stats_repo = SqlPlayerStatsRepo("{ODBC Driver 17 for SQL Server}", "(local)\SQLEXPRESS","DBEFinalProject", "Trusted_Connection=yes")
+        """Player Stats id GET route method.
+
+        Gets the details of a specific player stats from id
+
+        Returns:
+            render template of player_stat_details
+        """
+        players_repo = SqlPlayersRepo()
+        stats_repo = SqlPlayerStatsRepo()
         player = players_repo.fetch_player(id)
         stats = stats_repo.get_player_stats(id)
 
@@ -181,8 +219,15 @@ class WebController(FlaskView):
 
     @route('/player/<int:id>/stats/edit', methods=['POST'])
     def edit_player_stats_save(self, id: int):
-        players_repo = SqlPlayersRepo("{ODBC Driver 17 for SQL Server}", "(local)\\SQLEXPRESS", "DBEFinalProject", "Trusted_Connection=yes")
-        stats_repo = SqlPlayerStatsRepo("{ODBC Driver 17 for SQL Server}", "(local)\\SQLEXPRESS", "DBEFinalProject", "Trusted_Connection=yes")
+        """Player Stats id POST route method.
+
+        Posts the changes of a specific player stats to the database
+
+        Returns:
+            render template of player_stat_details
+        """
+        players_repo = SqlPlayersRepo()
+        stats_repo = SqlPlayerStatsRepo()
 
         form = PlayerStatsForm(request.form)
 
@@ -201,12 +246,20 @@ class WebController(FlaskView):
             print("POST data:", request.form)
             print("Validation passed:", form.validate_on_submit())
             print("Form errors:", form.errors)
+        # If invalid, show form again with errors
         player = players_repo.fetch_player(id)
         return render_template("player_stat_details.html", form=form, player=player)
 
 
     @route('/schedule/', methods=['GET'])
     def schedule(self):
+        """Games GET route method.
+
+        Gets the details of the games schedule
+
+        Returns:
+            render template of game_schedule
+        """
         games_repo = SqlGamesRepo()
         games = games_repo.get_all_games()
         return render_template("games_schedule.html", games=games)
