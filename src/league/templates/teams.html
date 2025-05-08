@@ -1,6 +1,9 @@
 {% extends "layout.html" %} {% block title %}Teams{% endblock %} {% block
 content %}
-<h2 class="team-heading text-center py-4">Teams</h2>
+<div class="text-center mt-5 mb-3">
+  <h1>Teams</h1>
+  <hr class="mx-auto" style="width: 90%; border-top: 3px solid #ccc" />
+</div>
 
 <div class="row">
   {% for team in teams %}

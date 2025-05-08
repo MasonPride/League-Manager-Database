@@ -6,7 +6,7 @@ from src.league.models.TeamStats import TeamStats
 
 class ITeamStatsRepo(ABC):
     @abstractmethod
-    def save_team_stats(self, team_id: int, games_played: int, hits: int, runs: int, home_runs: int, rbi: int, strikeouts: int) -> Optional[TeamStats]:
+    def save_team_stats(self, team_id: int, wins: int, losses: int, runs_scored: int, runs_allowed: int, games_played: int) -> Optional[TeamStats]:
         pass
 
     @abstractmethod

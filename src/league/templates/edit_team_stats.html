@@ -1,0 +1,33 @@
+{% extends "layout.html" %} {% block title %}Edit Team Stats{% endblock %} {%
+block content %}
+<div class="container py-4">
+  <h2 class="text-center mb-4">Edit Stats for {{ team.name }}</h2>
+
+  <form method="POST">
+    {{ form.hidden_tag() }}
+
+    <div class="mb-3">
+      {{ form.wins.label }} {{ form.wins(class="form-control") }}
+    </div>
+    <div class="mb-3">
+      {{ form.losses.label }} {{ form.losses(class="form-control") }}
+    </div>
+    <div class="mb-3">
+      {{ form.runs_scored.label }} {{ form.runs_scored(class="form-control") }}
+    </div>
+    <div class="mb-3">
+      {{ form.runs_allowed.label }} {{ form.runs_allowed(class="form-control")
+      }}
+    </div>
+    <div class="mb-3">
+      {{ form.games_played.label }} {{ form.games_played(class="form-control")
+      }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="/teams/{{ team.team_id }}/" class="btn btn-secondary ms-2"
+      >Cancel</a
+    >
+  </form>
+</div>
+{% endblock %}

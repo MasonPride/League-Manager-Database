@@ -3,6 +3,12 @@ from typing import Optional, List
 
 import pyodbc
 
+
+from dotenv import load_dotenv
+import os
+load_dotenv() 
+
+
 from src.data_access.RecordNotFoundException import RecordNotFoundException
 from src.data_access.sql_command_executor import SqlCommandExecutor
 from src.league.repositories.games.i_games_repo import IGamesRepo
@@ -10,7 +16,7 @@ from src.league.models.games import Games
 
 
 class SqlGamesRepo(IGamesRepo):
-    def __init__(self, driver: str = "{ODBC Driver 17 for SQL Server}", server: str = "", database: str = "", trusted: bool = True):
+    def __init__(self, driver: str = str(os.getenv("DRIVER")), server: str = str(os.getenv("SERVER")), database: str = str(os.getenv("DATABASE")), trusted: bool = True):
         self.executor = SqlCommandExecutor(driver=driver, server=server, database=database, trusted=trusted)
 
     def create_game(self, home_team_id: int, away_team_id: int, stadium_id: int, game_date: str) -> Optional[Games]:
@@ -51,9 +57,9 @@ class SqlGamesRepo(IGamesRepo):
                                                         input_param_names=inp_param_names,
                                                         input_param_values=inp_param_values)
         if len(results) == 1:
-            return self.translate_games(results[0])
+            return self.translate_game(results[0])
         else:
-            raise RecordNotFoundException(team_id)
+            raise RecordNotFoundException(game_id)
     
     def save_game(self, game_id: int, home_team_id: int, away_team_id: int, stadium_id: int, home_score: int, away_score: int, game_date: str):
         # verify parameters
@@ -72,8 +78,21 @@ class SqlGamesRepo(IGamesRepo):
         rows = self.executor.execute_stored_procedure(sp_name,
                                                       input_param_names=inp_param_names,
                                                       input_param_values=inp_param_values)
+
+    def get_all_games(self) -> Optional[List[Games]]:
+        sp_name = "League.GetAllGames"
+        results = self.executor.execute_stored_procedure(sp_name)
+
+        if len(results) >= 1:
+            return self.translate_games(results)
+        else:
+            return None
         
-    def translate_games(self, row: pyodbc.Row) -> Games:
+    def translate_game(self, row: pyodbc.Row) -> Games:
         return Games(row.GameID, row.HomeTeamID, row.AwayTeamID, row.StadiumID, row.GameDate, row.HomeScore, row.AwayScore) 
     
-    
+    def translate_games(self, rows: List[pyodbc.Row]) -> List[Games]:
+        games = []
+        for row in rows:
+            games.append(self.translate_game(row))
+        return games

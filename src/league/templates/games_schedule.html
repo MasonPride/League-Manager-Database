@@ -1,0 +1,33 @@
+{% extends "layout.html" %} {% block title %}League Schedule{% endblock %} {%
+block content %}
+<div class="container py-4">
+  <h2 class="text-center mb-4">Game Schedule</h2>
+
+  {% if games %}
+  <table class="table table-bordered table-striped">
+    <thead class="table-light">
+      <tr>
+        <th>Date</th>
+        <th>Stadium ID</th>
+        <th>Home Team ID</th>
+        <th>Away Team ID</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for game in games %}
+      <tr>
+        <td>{{ game.game_date }}</td>
+        <td>{{ game.stadium_id }}</td>
+        <td>{{ game.home_team_id }}</td>
+        <td>{{ game.away_team_id }}</td>
+        <td>{{ game.home_score }} - {{ game.away_score }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="text-muted text-center">No games scheduled yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

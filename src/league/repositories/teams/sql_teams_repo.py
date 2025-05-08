@@ -5,7 +5,6 @@ import pyodbc
 
 from dotenv import load_dotenv
 import os
-
 load_dotenv() 
 
 from src.data_access.RecordNotFoundException import RecordNotFoundException

@@ -3,6 +3,6 @@ CREATE OR ALTER PROCEDURE League.FetchStadium
 AS
 
 SELECT S.StadiumID, S.Name, S.Capacity, S.City
-FROM League.Stadium S
+FROM League.Stadiums S
 WHERE S.StadiumID = @StadiumID;
 GO

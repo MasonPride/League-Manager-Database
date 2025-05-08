@@ -1,21 +1,67 @@
-{% extends "layout.html" %} {% block title %}{{ team.name }}{% endblock %} {%
-block content %}
-<div class="container py-4">
-  <h2 class="text-center">{{ team.name }}</h2>
-  <p class="text-center text-muted">
-    {{ team.city }} — Founded: {{ team.founded_day }}
-  </p>
+{% extends "layout.html" %} {% block title %}Team Details{% endblock %} {% block
+content %}
 
-  <h4 class="mt-4">Players</h4>
-  <ul>
-    {% for player in players %}
-    <li>
-      <a href="/players/{{ player.player_id }}/">
-        {{ player.first_name }} {{ player.last_name }} - #{{ player.number }}
-        ({{ player.position }})
+<h2 class="text-center pt-3">{{ team.name }}</h2>
+<p class="text-center text-muted">
+  {{ team.city }} — Founded: {{ team.founded_day }}
+</p>
+
+<div class="row">
+  <div class="col-md-8 pt-3">
+    <h4 class="mb-3 text-center">- Players -</h4>
+    <ul class="list-group">
+      <li class="list-group-item bg-light fw-bold">
+        <div class="row">
+          <div class="col-md-6">Name</div>
+          <div class="col-md-3">Position</div>
+          <div class="col-md-3">Number</div>
+        </div>
+      </li>
+      {% for player in players %}
+      <li class="list-group-item">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <a href="/players/{{ player.player_id }}"
+              >{{ player.first_name }} {{ player.last_name }}</a
+            >
+          </div>
+          <div class="col-md-3">{{ player.position }}</div>
+          <div class="col-md-3">#{{ player.number }}</div>
+        </div>
+      </li>
+      {% endfor %}
+      <p></p>
+    </ul>
+  </div>
+
+  <div class="col-md-4 pt-3">
+    <h4 class="mb-3 text-center">- Team Stats -</h4>
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between">
+        Wins <span>{{ team_stats.wins }}</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between">
+        Losses <span>{{ team_stats.losses }}</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between">
+        Games Played <span>{{ team_stats.games_played }}</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between">
+        Runs Scored <span>{{ team_stats.runs_scored }}</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between">
+        Runs Allowed <span>{{ team_stats.runs_allowed }}</span>
+      </li>
+    </ul>
+    <div class="text-right pt-3">
+      <a
+        href="/teams/{{ team.team_id }}/stats/edit"
+        class="btn btn-outline-primary btn-sm text-right"
+      >
+        Edit Team Stats
       </a>
-    </li>
-    {% endfor %}
-  </ul>
+    </div>
+  </div>
 </div>
+
 {% endblock %}

@@ -28,11 +28,13 @@ Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\leagu
 Write-Host "Stadiums Stored procedures..."
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\Stadiums\League.FetchStadium.sql" -TrustServerCertificate
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\Stadiums\League.GetStadiumByName.sql" -TrustServerCertificate
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\Stadiums\League.GetAllStadiums.sql" -TrustServerCertificate
 
 Write-Host "Games Stored procedures..."
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\Games\League.FetchGame.sql" -TrustServerCertificate
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\Games\League.CreateGame.sql" -TrustServerCertificate
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\Games\League.SaveGame.sql" -TrustServerCertificate
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\Games\League.GetAllGames.sql" -TrustServerCertificate
 
 Write-Host "Teams Stored procedures..."
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "$Dir\league\sql\Procedures\Teams\League.FetchTeam.sql" -TrustServerCertificate
