@@ -7,7 +7,6 @@ content %}
   <form action="/player/{{ player.player_id }}/edit" method="POST">
     {{ form.hidden_tag() }}
 
-    <!-- First Name -->
     <div class="mb-3">
       {{ form.first_name.label }} {{ form.first_name(class_="form-control" + ("
       is-invalid" if form.first_name.errors else "")) }} {% for error in
@@ -16,7 +15,6 @@ content %}
       {% endfor %}
     </div>
 
-    <!-- Last Name -->
     <div class="mb-3">
       {{ form.last_name.label }} {{ form.last_name(class_="form-control" + ("
       is-invalid" if form.last_name.errors else "")) }} {% for error in
@@ -25,7 +23,6 @@ content %}
       {% endfor %}
     </div>
 
-    <!-- Number -->
     <div class="mb-3">
       {{ form.number.label }} {{ form.number(class_="form-control" + ("
       is-invalid" if form.number.errors else "")) }} {% for error in
@@ -34,7 +31,6 @@ content %}
       {% endfor %}
     </div>
 
-    <!-- Position -->
     <div class="mb-3">
       {{ form.position.label }} {{ form.position(class_="form-control" + ("
       is-invalid" if form.position.errors else "")) }} {% for error in
@@ -43,7 +39,6 @@ content %}
       {% endfor %}
     </div>
 
-    <!-- Birthday -->
     <div class="mb-3">
       {{ form.birthday.label }} {{ form.birthday(class_="form-control" + ("
       is-invalid" if form.birthday.errors else "")) }} {% for error in
@@ -52,7 +47,6 @@ content %}
       {% endfor %}
     </div>
 
-    <!-- Team -->
     <div class="mb-4">
       {{ form.team_id.label }} {{ form.team_id(class_="form-control" + ("
       is-invalid" if form.team_id.errors else "")) }} {% for error in
@@ -61,7 +55,6 @@ content %}
       {% endfor %}
     </div>
 
-    <!-- Submit -->
     <div class="text-end">
       <button type="submit" class="btn btn-primary">Save</button>
       <a href="/players/{{ player.player_id }}/" class="btn btn-secondary ms-2"
